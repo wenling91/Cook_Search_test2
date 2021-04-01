@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <LinearLayout
+        android:id="@+id/country_content_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF825C">
+
+            <SearchView
+                android:id="@+id/food_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:queryHint="輸入食物名稱、食材..."
+                app:iconifiedByDefault="false"
+                android:textCursorDrawable="@null" >
+            </SearchView>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <Button
+            android:id="@+id/Launch_Camera_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="Open_Camera"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:backgroundTint="#244D9E"
+            app:iconTint="#FFEB3B" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="搜尋紀錄"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:background="#F3BFD0"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/country_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="熱門搜尋"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:background="#F6F2CD"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/country_rvr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</RelativeLayout>
