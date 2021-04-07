@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
     <LinearLayout
-        android:id="@+id/country_content_id"
+        android:id="@+id/food_content_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -17,7 +17,7 @@
             android:background="#FF825C">
 
             <SearchView
-                android:id="@+id/food_search"
+                android:id="@+id/ingredients_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -37,21 +37,8 @@
             android:text="Open_Camera"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
-            app:backgroundTint="#244D9E"
+            app:backgroundTint="#62ACE6"
             app:iconTint="#FFEB3B" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="搜尋紀錄"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            android:background="#F3BFD0"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/country_rv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
         <TextView
             android:layout_width="match_parent"
@@ -62,7 +49,7 @@
             android:background="#F6F2CD"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/country_rvr"
+            android:id="@+id/hotlist_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

@@ -27,7 +27,7 @@ import kotlin.collections.ArrayList
 class  SearchFragment : Fragment(){
 
     lateinit var adapter: RecyclerView_Adapter
-    lateinit var fooddd: RecyclerView
+    lateinit var hotlist_rv: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,26 +35,33 @@ class  SearchFragment : Fragment(){
         savedInstanceState: Bundle?): View{
         val view = inflater.inflate(R.layout.fragment_search, container, false)
 
-        val searchIcon = food_search.findViewById<ImageView>(R.id.search_mag_icon)
+        val searchIcon = ingredients_search.findViewById<ImageView>(R.id.search_mag_icon)
         searchIcon.setColorFilter(Color.WHITE)
 
-        val cancelIcon = food_search.findViewById<ImageView>(R.id.search_close_btn)
+        val cancelIcon = ingredients_search.findViewById<ImageView>(R.id.search_close_btn)
         cancelIcon.setColorFilter(Color.WHITE)
 
-        val textView = food_search.findViewById<TextView>(R.id.search_src_text)
+        val textView = ingredients_search.findViewById<TextView>(R.id.search_src_text)
         textView.setTextColor(Color.WHITE)
         // If you want to change the color of the cursor, change the 'colorAccent' in colors.xml
 
-        fooddd = view.findViewById(R.id.my_recycler_view)
-        fooddd.layoutManager = LinearLayoutManager(fooddd.context)
-        fooddd.setHasFixedSize(true)
+        //製作熱門搜尋的recycler_view
+        hotlist_rv = view.findViewById(R.id.hotlist_rv)
+        hotlist_rv.layoutManager = LinearLayoutManager(hotlist_rv.context)
+        hotlist_rv.setHasFixedSize(true)
 
-        food_search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        //做一個textListener，參數query為輸入字串
+        ingredients_search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            //當使用者輸入（提交）一text
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
 
+            //當使用者修改輸入字串
             override fun onQueryTextChange(newText: String?): Boolean {
+
+                //重置adapter並重新檢查輸入字串
                 adapter.filter.filter(newText)
                 return false
             }
@@ -86,14 +93,14 @@ class  SearchFragment : Fragment(){
     }
 
     private fun getListOfFoods() {
-        val isoCountryCodes = arrayOf("A","B")
-        val foodList = ArrayList<String>()
-        for (i in isoCountryCodes) {
-            val locale = Locale("", i)
-            foodList.add("food") //更改名稱
+        //設定熱門搜尋的選項
+        val hotlist_items = arrayOf("快速晚餐","高麗菜","馬鈴薯","簡易家常菜","雞肉","超簡單甜點","家常菜 肉","減醣")
+        val hotList = ArrayList<String>()
+        for (i in hotlist_items) {
+            hotList.add(i) //更改名稱
         }
-        adapter = RecyclerView_Adapter(foodList)
-        fooddd.adapter = adapter
+        adapter = RecyclerView_Adapter(hotList)
+        hotlist_rv.adapter = adapter
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

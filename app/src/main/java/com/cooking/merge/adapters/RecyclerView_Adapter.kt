@@ -11,8 +11,8 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.cooking.merge.R
-import com.cooking.merge.bottom_fragments.HomeFragment
-import kotlinx.android.synthetic.main.fooditems_details.view.*
+import com.cooking.merge.SearchActivity
+import kotlinx.android.synthetic.main.recyclerview_row.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -23,7 +23,7 @@ class RecyclerView_Adapter(private var foodList: ArrayList<String>):
 
     lateinit var mcontext: Context
 
-    class CountryHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class FoodHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     init {
         foodFilterList = foodList
@@ -31,8 +31,8 @@ class RecyclerView_Adapter(private var foodList: ArrayList<String>):
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val foodListView =
-            LayoutInflater.from(parent.context).inflate(R.layout.fooditems_details, parent, false)
-        val sch = CountryHolder(foodListView)
+            LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_row, parent, false)
+        val sch = FoodHolder(foodListView)
         mcontext = parent.context
         return sch
     }
@@ -44,12 +44,12 @@ class RecyclerView_Adapter(private var foodList: ArrayList<String>):
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.itemView.select_food_container.setBackgroundColor(Color.TRANSPARENT)
 
-        holder.itemView.TV_detailsname.setTextColor(Color.WHITE)
-        holder.itemView.TV_detailsname.text = foodFilterList[position]
+        holder.itemView.select_food_text.setTextColor(Color.WHITE)
+        holder.itemView.select_food_text.text = foodFilterList[position]
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(mcontext, HomeFragment::class.java)
-            intent.putExtra("passselectedcountry", foodFilterList[position])
+            val intent = Intent(mcontext, SearchActivity::class.java)
+            intent.putExtra("passselectedfood", foodFilterList[position])
             mcontext.startActivity(intent)
             Log.d("Selected:", foodFilterList[position])
         }
